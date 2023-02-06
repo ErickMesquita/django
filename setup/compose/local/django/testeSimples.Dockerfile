@@ -20,7 +20,13 @@ RUN apk -U add \
 
 # Installing Rust is mandatory for cryptography
 RUN ["apk", "--no-cache", "add", "curl"]
-RUN curl https://sh.rustup.rs -sSf | sh
+WORKDIR /tmp
+RUN curl https://static.rust-lang.org/dist/rustc-1.67.0-src.tar.gz \
+  | tar -xz
+WORKDIR /tmp/rustc-1.67.0-src
+RUN ./configure
+RUN make -j4
+RUN make install
 
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements .
