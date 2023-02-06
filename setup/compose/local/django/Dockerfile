@@ -1,7 +1,8 @@
-ARG PYTHON_VERSION=3.8-slim-bullseye
+ARG PYTHON_VERSION=3.8-alpine
 
 # define an alias for the specfic python version used in this file.
-FROM python:${PYTHON_VERSION} as python
+FROM arm32v6/python:${PYTHON_VERSION} as python
+
 
 # Python build stage
 FROM python as python-build-stage
