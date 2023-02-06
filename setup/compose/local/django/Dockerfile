@@ -18,7 +18,9 @@ RUN apk -U add \
   # libffi
   libffi libffi-dev
 
+
 # Installing Rust is mandatory for cryptography
+RUN ["apk", "--no-cache", "add", "curl"]
 RUN ["curl", "https://sh.rustup.rs", "-sSf", "|", "sh"]
 
 # Requirements are installed here to ensure they will be cached.
