@@ -12,7 +12,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 # Install apk packages
 RUN apk -U add \
   # dependencies for building Python packages
-  build-essential \
+  build-base \
   # psycopg2 dependencies
   libpq-dev \
   # The older versions of packages can be removed with the clean command.

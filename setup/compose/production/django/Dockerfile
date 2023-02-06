@@ -12,7 +12,7 @@ ARG BUILD_ENVIRONMENT=production
 # Install apk packages
 RUN apk -U add \
   # dependencies for building Python packages
-  build-essential \
+  build-base \
   # psycopg2 dependencies
   libpq-dev
 
