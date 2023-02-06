@@ -21,7 +21,7 @@ RUN apk -U add \
 
 # Installing Rust is mandatory for cryptography
 RUN ["apk", "--no-cache", "add", "curl"]
-RUN ["curl", "https://sh.rustup.rs", "-sSf", "|", "sh"]
+RUN curl https://sh.rustup.rs -sSf | sh
 
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements .
