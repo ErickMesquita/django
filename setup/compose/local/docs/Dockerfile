@@ -9,14 +9,14 @@ FROM python as python-build-stage
 
 ENV PYTHONDONTWRITEBYTECODE 1
 
-RUN apt-get update && apt-get install --no-install-recommends -y \
+# Install apk packages
+RUN apk -U add \
   # dependencies for building Python packages
   build-essential \
   # psycopg2 dependencies
   libpq-dev \
-  # cleaning up unused files
-  && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
-  && rm -rf /var/lib/apt/lists/*
+  # The older versions of packages can be removed with the clean command.
+  && apk cache clean
 
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements /requirements
@@ -34,7 +34,7 @@ ARG BUILD_ENVIRONMENT
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 
-RUN apt-get update && apt-get install --no-install-recommends -y \
+RUN apk -U add \
   # To run the Makefile
   make \
   # psycopg2 dependencies
@@ -46,9 +46,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   # texlive-fonts-recommended \
   # texlive-latex-extra \
   # latexmk \
-  # cleaning up unused files
-  && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
-  && rm -rf /var/lib/apt/lists/*
+  # The older versions of packages can be removed with the clean command.
+  && apk cache clean
 
 # copy python dependency wheels from python-build-stage
 COPY --from=python-build-stage /usr/src/app/wheels /wheels
