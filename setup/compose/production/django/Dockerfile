@@ -14,7 +14,9 @@ RUN apk -U add \
   # dependencies for building Python packages
   build-base \
   # psycopg2 dependencies
-  libpq-dev
+  libpq-dev \
+  # libffi
+  libffi6 libffi-dev
 
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements .

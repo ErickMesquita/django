@@ -15,6 +15,8 @@ RUN apk -U add \
   build-base \
   # psycopg2 dependencies
   libpq-dev \
+  # libffi
+  libffi6 libffi-dev \
   # The older versions of packages can be removed with the clean command.
   && apk cache clean
 
