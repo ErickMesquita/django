@@ -16,7 +16,7 @@ RUN apk -U add \
   # psycopg2 dependencies
   libpq-dev \
   # libffi
-  libffi6 libffi-dev
+  libffi libffi-dev
 
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements .
