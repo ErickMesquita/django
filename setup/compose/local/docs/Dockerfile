@@ -16,9 +16,7 @@ RUN apk -U add \
   # psycopg2 dependencies
   libpq-dev \
   # libffi
-  libffi libffi-dev \
-  # The older versions of packages can be removed with the clean command.
-  && apk cache clean
+  libffi libffi-dev
 
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements /requirements
@@ -47,9 +45,7 @@ RUN apk -U add \
   # texlive-latex-recommended \
   # texlive-fonts-recommended \
   # texlive-latex-extra \
-  # latexmk \
-  # The older versions of packages can be removed with the clean command.
-  && apk cache clean
+  # latexmk
 
 # copy python dependency wheels from python-build-stage
 COPY --from=python-build-stage /usr/src/app/wheels /wheels
