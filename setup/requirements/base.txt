@@ -1,4 +1,9 @@
-# Django
+# Required
 # ------------------------------------------------------------------------------
 Django==4.1.6
 psycopg2==2.9.5  # https://github.com/psycopg/psycopg2
+
+# Dependencies
+asgiref==3.6.0
+backports.zoneinfo==0.2.1
+sqlparse==0.4.3
