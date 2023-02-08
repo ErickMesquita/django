@@ -39,13 +39,13 @@ RUN apk -U add \
   make \
   # psycopg2 dependencies
   libpq-dev \
-  # Translations dependencies
-  gettext \
   # Uncomment below lines to enable Sphinx output to latex and pdf
   # texlive-latex-recommended \
   # texlive-fonts-recommended \
   # texlive-latex-extra \
-  # latexmk
+  # latexmk \
+  # Translations dependencies
+  gettext
 
 # copy python dependency wheels from python-build-stage
 COPY --from=python-build-stage /usr/src/app/wheels /wheels
