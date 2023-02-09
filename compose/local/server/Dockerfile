@@ -43,9 +43,7 @@ RUN apk -U add \
   # psycopg2 dependencies
   libpq-dev \
   # Translations dependencies
-  gettext \
-  # The older versions of packages can be removed with the clean command.
-  && apk cache clean
+  gettext
 
 # All absolute dir copies ignore workdir instruction. All relative dir copies are wrt to the workdir instruction
 # copy python dependency wheels from python-build-stage
