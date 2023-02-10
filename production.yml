@@ -6,17 +6,17 @@ volumes:
   production_traefik: {}
 
 services:
-  .envs:
+  server:
     build:
       context: .
-      dockerfile: ./compose/production/.envs/Dockerfile
+      dockerfile: ./compose/production/server/Dockerfile
 
-    image: setup_production_.envs
+    image: setup_production_server
     depends_on:
       - postgres
       - redis
     env_file:
-      - ./.envs/.production/..envs
+      - ./.envs/.production/.server
       - ./.envs/.production/.postgres
     command: /start
 
