@@ -3,3 +3,16 @@
 pytest==7.2.1  # https://github.com/pytest-dev/pytest
 pytest-django==4.5.2  # https://github.com/pytest-dev/pytest-django
 factory-boy==3.2.1  # https://github.com/FactoryBoy/factory_boy
+
+# Package dependencies
+tomli==2.0.1
+attrs==22.2.0
+exceptiongroup==1.1.0
+Faker==16.8.1
+pluggy==1.0.0
+sqlparse==0.4.3
+iniconfig==2.0.0
+packaging==23.0
+python-dateutil==2.8.2
+six==1.16.0
+
