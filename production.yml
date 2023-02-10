@@ -15,8 +15,8 @@ services:
       - postgres
       - redis
     env_file:
-      - ./.envs/.production/.server
-      - ./.envs/.production/.postgres
+      - ./.env/.production/.server
+      - ./.env/.production/.postgres
     command: /start
     networks:
       - back-end
@@ -30,7 +30,7 @@ services:
       - production_postgres_data:/var/lib/postgresql/data
       - production_postgres_data_backups:/backups
     env_file:
-      - ./.envs/.production/.postgres
+      - ./.env/.production/.postgres
     networks:
       - back-end
 
