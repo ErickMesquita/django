@@ -40,13 +40,13 @@ SITE_ID = 1
 USE_I18N = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#use-tz
 USE_TZ = True
-
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^upy!=x8^6s-90*f--_1jwfdz+k+^=6w1+zsydve00q75bwt+2'
-
-
-ALLOWED_HOSTS = []
+# https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
+SECRET_KEY = env(
+    "DJANGO_SECRET_KEY",
+    default="Dc1vuSkQVUXOFiqNUhFVyygQl1dXHGyPFPWDefDj1l0AqwPOs37vTak5rM2UYJnU",
+)
+# https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1", "::1"]
 
 
 # Application definition
