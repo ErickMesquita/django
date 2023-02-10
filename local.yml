@@ -21,6 +21,8 @@ services:
     ports:
       - "8000:8000"
     command: /start
+    networks:
+      - back-end
 
   postgres:
     build:
@@ -33,3 +35,9 @@ services:
       - setup_local_postgres_data_backups:/backups
     env_file:
       - ./.envs/.local/.postgres
+    networks:
+      - back-end
+
+networks:
+  back-end:
+    driver: bridge

@@ -3,7 +3,6 @@ version: '3'
 volumes:
   production_postgres_data: {}
   production_postgres_data_backups: {}
-  production_traefik: {}
 
 services:
   server:
@@ -19,6 +18,8 @@ services:
       - ./.envs/.production/.server
       - ./.envs/.production/.postgres
     command: /start
+    networks:
+      - back-end
 
   postgres:
     build:
@@ -30,3 +31,9 @@ services:
       - production_postgres_data_backups:/backups
     env_file:
       - ./.envs/.production/.postgres
+    networks:
+      - back-end
+
+networks:
+  back-end:
+    driver: bridge
