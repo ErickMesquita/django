@@ -1,0 +1,43 @@
+version: '3'
+
+volumes:
+  setup_local_postgres_data: {}
+  setup_local_postgres_data_backups: {}
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: ./compose/local/server/Dockerfile
+    image: setup_local_server
+    container_name: setup_local_server
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app:z
+    env_file:
+      - ./.env/.local/.server
+      - ./.env/.local/.postgres
+    ports:
+      - "8000:8000"
+    command: /start
+    networks:
+      - back-end
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./compose/production/postgres/Dockerfile
+    image: setup_local_postgres
+    container_name: setup_local_postgres
+    volumes:
+      - setup_local_postgres_data:/var/lib/postgresql/data
+      - setup_local_postgres_data_backups:/backups
+    env_file:
+      - ./.env/.local/.postgres
+    networks:
+      - back-end
+
+networks:
+  back-end:
+    driver: bridge
